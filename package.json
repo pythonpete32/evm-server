@@ -1,0 +1,28 @@
+{
+	"name": "template-server",
+	"version": "0.1.0",
+	"description": "A Template MCP Server with bun and biome",
+	"private": true,
+	"type": "module",
+	"bin": {
+		"evm-server": "./build/index.js"
+	},
+	"files": ["build"],
+	"scripts": {
+		"check": "bun biome check --write .",
+		"build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+		"prepare": "bun run build",
+		"watch": "tsc --watch",
+		"inspector": "bun prepare && bunx x @modelcontextprotocol/inspector build/index.js"
+	},
+	"dependencies": {
+		"@modelcontextprotocol/sdk": "0.6.0",
+		"punycode": "^2.3.1",
+		"zod-to-json-schema": "^3.24.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^20.17.10",
+		"typescript": "^5.7.2"
+	}
+}
